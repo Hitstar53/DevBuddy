@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'rest_framework',
     'corsheaders',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'devbuddy.urls'
@@ -69,9 +71,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
             ],
         },
     },
+]
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 WSGI_APPLICATION = 'devbuddy.wsgi.application'
@@ -133,3 +140,6 @@ STATIC_ROOT = 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = True
+
+SOCIAL_AUTH_GITHUB_KEY = '5c825c0ca4d9f0074504'
+SOCIAL_AUTH_GITHUB_SECRET ='a5e1b8dfc2d1f3f2a01e140d7a069b59e7f13618'
