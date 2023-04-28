@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Path: src\App.css */
+.App {
+  text-align: center;
+}
