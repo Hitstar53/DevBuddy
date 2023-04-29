@@ -21,12 +21,13 @@ def registerOrg(request):
         orgPass= request.POST['orgPass']
         orgDesc= request.POST['orgDesc']
         orgPassConfirm= request.POST['orgPassConfirm']
+        orgImage = request.FILES['orgImage']
         if orgPass==orgPassConfirm:
             if Organization.objects.filter(email=orgEmail).exists():
                 messages.info(request, 'Email already exists')
                 return redirect('registerOrg')
             else:
-                organization = Organization.objects.create(name=orgName, description= orgDesc, email=orgEmail, location=orgLoc, password=orgPass)
+                organization = Organization.objects.create(name=orgName, description= orgDesc, email=orgEmail, location=orgLoc, password=orgPass,image=orgImage)
                 organization.save()
                 return redirect('loginOrg')
 

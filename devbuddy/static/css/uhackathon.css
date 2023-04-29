@@ -426,7 +426,7 @@ a {
 }
 
 .filler{
-  margin-bottom: 2rem;
+  height: 100%;
   width: 100%;
   display: inline-block;
   vertical-align: middle;
@@ -444,8 +444,12 @@ a {
   transform: scale(1.1);
 }
 
+.profile-card-form__input option {
+  font-size: 16px;
+}
+
 .filler h1{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 20px;
 }

@@ -1,44 +1,35 @@
 {% extends 'base.html' %} {% load static %} {% block title %}
-<title>DevBuddy | Profile</title>
+<title>DevBuddy | Organization</title>
 {% endblock title %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+<link rel="stylesheet" href="{% static 'css/orgyhackathon.css' %}" />
 {% endblock css %} {% block left %}
 <div class="wrapper">
   <div class="profile-card js-profile-card">
     <div class="profile-card__img">
       <img
-        src="{{ user_profile.avatar }}"
+        src="{% static 'assets/LogoSPIT.png' %}"
         alt="profile card"
       />
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name">{{ user_profile.username }}</div>
+      <div class="profile-card__name">SPIT</div>
       <div class="profile-card__txt">
-        {{ user_profile.bio }}
+        Sardar Patel Institute of Technology (SPIT) is an autonomous research and engineering institute associated with the Mumbai University. The institute is ranked 167th under the engineering category by NIRF. 
       </div>
       <div class="profile-card-loc">
         <span class="profile-card-loc__icon">
           <svg class="icon"><use xlink:href="#icon-location"></use></svg>
         </span>
-        <span class="profile-card-loc__txt"> {{ user_profile.location }} </span>
+        <span class="profile-card-loc__txt"> SPIT</span>
       </div>
 
       <div class="profile-card-inf">
         <div class="profile-card-inf__item">
-          <div class="profile-card-inf__title">{{ user_profile.followers }}</div>
-          <div class="profile-card-inf__txt">Followers</div>
+          <div class="profile-card-inf__title">10</div>
+          <div class="profile-card-inf__txt">Hackathons</div>
         </div>
 
-        <div class="profile-card-inf__item">
-          <div class="profile-card-inf__title">{{ user_profile.following }}</div>
-          <div class="profile-card-inf__txt">Following</div>
-        </div>
-
-        <div class="profile-card-inf__item">
-          <div class="profile-card-inf__title">5</div>
-          <div class="profile-card-inf__txt">Teams</div>
-        </div>
       </div>
 
       <div class="profile-card-social">
@@ -72,54 +63,12 @@
           </span>
         </a>
 
-        <a
-          href="https://www.behance.net/iaMuhammedErdem"
-          class="profile-card-social__item behance"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-behance"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="https://github.com/muhammederdem"
-          class="profile-card-social__item github"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-github"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="https://codepen.io/JavaScriptJunkie"
-          class="profile-card-social__item codepen"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-codepen"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="http://muhammederdem.com.tr/"
-          class="profile-card-social__item link"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-link"></use></svg>
-          </span>
-        </a>
       </div>
 
       <div class="profile-card-ctr">
         <button class="profile-card__button button--blue js-message-btn">
-          Create Team
+          Create Hackathon
         </button>
-        <a class="profile-card__button button--orange" href="{% url 'teams' %}">
-            View Teams
-        </a>
       </div>
     </div>
 
@@ -127,13 +76,13 @@
       <form class="profile-card-form" action="" method="POST">
         {% csrf_token %}
         <div class="profile-card-form__container">
-            <div class="profile-card-form__title">Create Team</div>
+            <div class="profile-card-form__title">Create Hackathon</div>
             <div class="profile-card-form__item">
                 <input
                 name = "teamname"
                 type="text"
                 class="profile-card-form__input"
-                placeholder="Team Name"
+                placeholder="Hackathon Name"
                 />
             </div>
             <div class="profile-card-form__item">
@@ -141,7 +90,7 @@
                 name = "teamdesc"
                 type="text"
                 class="profile-card-form__input"
-                placeholder="Team Description"
+                placeholder="Hackathon Description"
                 />
             </div>
         </div>
@@ -260,27 +209,12 @@
 {% block right %}
 <div>
 <div class="filler">
-  <h1> Invites </h1>
-{% for team in team_names %}
+  <h1> Previously Hosted Hackathons </h1>
+{% for team in hackathons %}
 <div class="list">
 <p>{{ team }}</p>
-<a href="{% url 'rejectinvite' teamname=team %}">
-  <i class="fa-regular fa-circle-xmark"></i>
-</a>
-<a href="{% url 'acceptinvite' teamname=team %}">
-<i class="fa-regular fa-circle-check"></i>
-</a>
 </div>
 {% endfor %}
-</div>
-<div class="filler filler2">
-  <h1>Teams</h2>
-    {% for team in user_teams %}
-  <div class="list">
-    <p>{{ team }}</p>
-  </div>
-    {% endfor %}
-  </div>
 </div>
 {% endblock right %}
 

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block left %}
+<div class="mb-3">
+    <form action="" method="POST">
+        {% csrf_token %}
+  <label for="" class="form-label">Tag Name</label>
+  <input type="text" class="form-control" name="tagname" >
+  <label for="" class="form-label">Username</label>
+  <input type="text" class="form-control" name="username" >
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+ 
+</div>
+{% for id in ids %}
+<p>{{id}}</p>
+{% endfor %}
+
+{% endblock %}

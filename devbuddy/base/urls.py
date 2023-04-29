@@ -14,4 +14,8 @@ urlpatterns = [
     path('team/<int:id>/', views.team, name='team'),
     path('chatroom', views.chat_room, name='chatroom'),
     path('chat/<str:room_name>/', views.chat_room, name='chat_room'),
-]
+    path('tags/', views.tags, name='tags'),
+    path('uhackathon/', views.register_hackathon, name='uhackathon'),
+    path('searchhackathon/', views.searchhackathon, name='searchhackathon'),
+    path('organization/', views.create_hackathon, name='organization'),
+] 

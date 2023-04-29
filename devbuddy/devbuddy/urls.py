@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
+#import settings 
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('', include('base.urls')),
@@ -23,3 +27,5 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

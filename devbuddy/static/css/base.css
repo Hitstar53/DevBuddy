@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
+* {
+  font-family: 'Bruno Ace SC', cursive;
+}
+
 body{
   height: 100vh;
+  font-family: 'Bruno Ace SC', cursive;
 }
 
 nav {

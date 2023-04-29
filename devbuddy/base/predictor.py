@@ -3,7 +3,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from .models import Tags, User
 
-def recommend_users(user_id, n=5):
+def recommend_users(user, n=5):
     """
     Recommends users based on tags using an AI model.
     Args:
@@ -13,16 +13,22 @@ def recommend_users(user_id, n=5):
     list: A list of recommended user IDs.
     """
     # Get user tags
-    user_tags = Tags.objects.filter(coder=user_id).values_list('tag__name', flat=True)
-    user_tag_string = ' '.join(user_tags)
+    user_tags = Tags.objects.filter(coder=user)
+    user_tags_name = []
+    for tag in user_tags:
+        user_tags_name.append(tag.name)
+    user_tag_string = ' '.join(user_tags_name)
     
     # Query all other users
-    users = User.objects.exclude(id=user_id)
+    users = User.objects.exclude(id=user.id)
     user_tags_dict = {}
     for user in users:
         # Get user tags
-        tags = Tags.objects.filter(user=user).values_list('tag__name', flat=True)
-        tag_string = ' '.join(tags)
+        tags = Tags.objects.filter(coder=user)
+        users_tags_name = []
+        for tag in tags:
+            users_tags_name.append(tag.name)
+        tag_string = ' '.join(users_tags_name)
         user_tags_dict[user.id] = tag_string
         
     # Create dataframe of users and tags
@@ -44,4 +50,7 @@ def recommend_users(user_id, n=5):
     # Get top n recommended user IDs
     recommended_user_ids = similar_users.head(n)['user_id'].tolist()
     
-    return recommended_user_ids
+    recommend_users = []
+    for i in recommended_user_ids:
+        recommend_users.append(User.objects.get(id=i))
+    return recommend_users

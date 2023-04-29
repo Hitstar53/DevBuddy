@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 import requests
-from .models import Team, User, Project, Hackathon
+from .models import Team, User, Project, Hackathon, Tags
+from .predictor import recommend_users
+from django.db.models import Q
 # Create your views here.
 
 @login_required(login_url='/login/')
@@ -37,6 +39,7 @@ def home(request):
 def profile(request):
     user_profile = User.objects.get(username=request.user.username)
     invited_teams = user_profile.invites.all()
+    user_teams = user_profile.teams.all()
     team_ids=[]
     team_names=[]
     for team in invited_teams:
@@ -53,10 +56,7 @@ def profile(request):
         request.user.teams.add(team)
         request.user.save()
         message = "Created team successfully!" 
-
-    
-    
-    return render(request, 'base/profile.html', {'user_profile':user_profile, 'team_id':team_ids, 'team_names':team_names})
+    return render(request, 'base/profile.html', {'user_profile':user_profile, 'team_id':team_ids, 'team_names':team_names, 'user_teams':user_teams})
 
 def addmember(request,id):
     if request.method == 'POST':
@@ -158,24 +158,58 @@ def rejectinvite(request, teamname):
     return redirect('profile')
 
 def create_hackathon(request):
-    if request.method == 'POST':
-        name = request.POST['hackathonname']
-        description = request.POST['hackathondesc']
-        print(name, description)
-        hackathon=Hackathon(name=name, description=description)
-        hackathon.save()
-        message = "Created hackathon successfully!"
-        return render(request, 'base/home.html', {'message':message,})
-    return render(request, 'base/create_hackathon.html')
+    # if request.method == 'POST':
+    #     name = request.POST['hackathonname']
+    #     description = request.POST['hackathondesc']
+    #     print(name, description)
+    #     hackathon=Hackathon(name=name, description=description)
+    #     hackathon.save()
+    #     message = "Created hackathon successfully!"
+    #     return render(request, 'base/home.html', {'message':message,})
+    hackathons = {
+        "Hackathon 1": "Hackathon 1",
+        "Hackathon 2": "Hackathon 2",
+        "Hackathon 3": "Hackathon 3",
+    }
+    return render(request, 'base/orgyhackathon.html', {'hackathons':hackathons})
 
-def register_hackathon(request,id):
+def register_hackathon(request):
+    # if request.method == 'POST':
+    #     hackathon = Hackathon.objects.get(id=id)
+    #     team_name=request.POST['teamname']
+    #     team = Team.objects.get(name=team_name)
+    #     hackathon.teams.add(team)
+    #     hackathon.save()
+    #generate a random dictionary consistings of teams
+    #hackathon = Hackathon.objects.get(id=id)
+    team_names = {
+        "Team 1": "Team 1",
+        "Team 2": "Team 2",
+        "Team 3": "Team 3",
+        "Team 4": "Team 4",
+        "Team 5": "Team 5",
+        "Team 6": "Team 6",
+    # add more teams as desired
+    }
+    return render(request, 'base/uhackathon.html', {'team_names':team_names})
+
+def tags(request):
     if request.method == 'POST':
-        hackathon = Hackathon.objects.get(id=id)
-        team_name=request.POST['teamname']
-        team = Team.objects.get(name=team_name)
-        hackathon.teams.add(team)
-        hackathon.save()
-    return render(request, 'base/register_hackathon.html', {'hackathon':hackathon})
+        tagname = request.POST['tagname']
+        u=request.POST['username']
+        coder=User.objects.get(username=u)
+        tag = Tags(name=tagname, coder=coder)
+        tag.save()
+    ids = recommend_users(request.user,2)
+    
+    return render(request, 'base/tag.html', {'ids':ids})
+
+def searchhackathon(request):
+    if request.method == 'POST':
+         query = request.POST.get('query', '')
+         hackathons = Hackathon.objects.filter(Q(name__icontains=query)).distinct()
+         return render(request, 'base/searchhackathon.html', {'hackathons': hackathons})
+    return render(request, 'base/searchhackathon.html')
 
 
 def chat_room(request):
