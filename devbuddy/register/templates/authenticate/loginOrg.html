@@ -1,12 +1,13 @@
-<HTML>
+{% comment %} <HTML>
 <HEAD>
 <TITLE>Organization Login</TITLE>
 </HEAD>
 <BODY>
-<FORM ACTION="loginOrg.php" METHOD="POST">
+<FORM ACTION="" METHOD="POST">
+{% csrf_token %}
 <INPUT TYPE="TEXT" NAME="orgName" VALUE="Organization Name">
 <INPUT TYPE="TEXT" NAME="orgPass" VALUE="Password">
 <INPUT TYPE="SUBMIT" VALUE="Login">
 </FORM>
 </BODY>
-</HTML>
+</HTML> {% endcomment %}

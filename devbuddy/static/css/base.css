@@ -1,3 +1,7 @@
+body{
+  height: 100vh;
+}
+
 nav {
     background-color: #333;
     color: white;
@@ -60,4 +64,57 @@ nav {
 
 .content {
     margin: 20px;
+}
+
+html, body {
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.w-70 {
+  width: 80%;
+}
+
+.w-30 {
+  width: 20%;
+}
+
+.h-screen {
+  height: 100%;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-gray-100 {
+  background-color: #f7fafc;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 640px) {
+  .flex-row {
+    flex-direction: column;
+  }
+  .w-70, .w-30 {
+    width: 100%;
+  }
 }

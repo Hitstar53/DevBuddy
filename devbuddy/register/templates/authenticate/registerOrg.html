@@ -1,16 +1,19 @@
-<HTML>
+{% comment %} <HTML>
 <HEAD>
 <TITLE>Register Organization</TITLE>
 </HEAD>
 <BODY>
-<FORM ACTION="registerOrg.php" METHOD="POST">
+<FORM ACTION="" METHOD="POST">
+{% csrf_token %}
 <H2>Register Organization</H2>
 <P>Organization Name: <INPUT TYPE="TEXT" NAME="orgName" SIZE="30"></P>
+<p>Organization Description <input type="text" name="orgDesc" value=""></p>
 <p>Organization Email</p><INPUT NAME="orgEmail" VALUE="">
 <p>Organization Location</p><INPUT NAME="orgLoc" VALUE="">
 <p>Password</p><INPUT NAME="orgPass" VALUE="">
 <p>Confirm Password</p><INPUT NAME="orgPassConfirm" VALUE="">
+    <button type="submit" name="submit">Submit</button>
 </FORM>
 </BODY>
-</HTML>
+</HTML> {% endcomment %}
 

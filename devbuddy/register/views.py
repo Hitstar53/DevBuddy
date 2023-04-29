@@ -22,7 +22,7 @@ def registerOrg(request):
         orgDesc= request.POST['orgDesc']
         orgPassConfirm= request.POST['orgPassConfirm']
         if orgPass==orgPassConfirm:
-            if Organization.objects.filter(orgEmail=orgEmail).exists():
+            if Organization.objects.filter(email=orgEmail).exists():
                 messages.info(request, 'Email already exists')
                 return redirect('registerOrg')
             else:
@@ -36,8 +36,8 @@ def loginOrg(request):
     if request.method=='POST':
         orgEmail = request.POST['orgEmail']
         orgPass= request.POST['orgPass']
-        if Organization.objects.filter(orgEmail=orgEmail).exists():
-            organization = Organization.objects.get(orgEmail=orgEmail)
+        if Organization.objects.filter(email=orgEmail).exists():
+            organization = Organization.objects.get(email=orgEmail)
             if organization.password==orgPass:
                 return render(request, 'base/home.html')
             else:

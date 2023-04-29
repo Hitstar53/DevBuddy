@@ -42,6 +42,20 @@ def profile(request):
     for team in invited_teams:
         team_ids.append(team.id)
         team_names.append(team.name)
+    if request.method=='POST':
+        name = request.POST['teamname']
+        description = request.POST['teamdesc']
+        print(name, description)
+        team=Team(name=name, description=description, teamleader=request.user)
+        team.save()
+        team.accepted_members.add(request.user)
+        team.save()
+        request.user.teams.add(team)
+        request.user.save()
+        message = "Created team successfully!" 
+
+    
+    
     return render(request, 'base/profile.html', {'user_profile':user_profile, 'team_id':team_ids, 'team_names':team_names})
 
 def addmember(request,id):
@@ -67,6 +81,9 @@ def createteam(request):
         name = request.POST['teamname']
         description = request.POST['teamdesc']
         print(name, description)
+        if Team.objects.filter(name=name).exists():
+            message = "Team name already exists!"
+            return render(request, 'base/createteam.html', {'message':message})
         team=Team(name=name, description=description, teamleader=request.user)
         team.save()
         team.accepted_members.add(request.user)
@@ -161,7 +178,15 @@ def register_hackathon(request,id):
     return render(request, 'base/register_hackathon.html', {'hackathon':hackathon})
 
 
-def chat_room(request, room_name):
-    return render(request, 'base/chat.html', {
-        'room_name': room_name
-    })
+def chat_room(request):
+    data = {
+    "members": [
+        { "id": 1, "name": "John", "image": "https://randomuser.me/api/portraits/men/1.jpg" },
+        { "id": 2, "name": "Jane", "image": "https://randomuser.me/api/portraits/women/2.jpg" },
+        { "id": 3, "name": "Mike", "image": "https://randomuser.me/api/portraits/men/3.jpg" },
+        { "id": 4, "name": "Emily", "image": "https://randomuser.me/api/portraits/women/4.jpg" },
+        { "id": 5, "name": "Chris", "image": "https://randomuser.me/api/portraits/men/5.jpg" }
+    ]
+    }
+
+    return render(request, 'base/chat.html', {'data': data})
