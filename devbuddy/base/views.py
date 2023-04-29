@@ -160,3 +160,10 @@ def register_hackathon(request,id):
 
 
     return render(request, 'base/register_hackathon.html', {'hackathons':hackathons})
+
+
+
+def chat_room(request, room_name):
+    return render(request, 'base/chat.html', {
+        'room_name': room_name
+    })

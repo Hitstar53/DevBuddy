@@ -12,4 +12,5 @@ urlpatterns = [
     path('rejectinvite/<str:teamname>/', views.rejectinvite, name='rejectinvite'),
     path('teams/', views.teams, name='teams'),
     path('team/<int:id>/', views.team, name='team'),
+    path('chat/<str:room_name>/', views.chat_room, name='chat_room'),
 ]
