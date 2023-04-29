@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 import requests
-from .models import Team, User, Project
+from .models import Team, User, Project, Hackathon
 # Create your views here.
 
 @login_required(login_url='/login/')
@@ -138,3 +138,25 @@ def rejectinvite(request, teamname):
     request.user.invites.remove(team)
     request.user.save()
     return redirect('profile')
+
+def create_hackathon(request):
+    if request.method == 'POST':
+        name = request.POST['hackathonname']
+        description = request.POST['hackathondesc']
+        print(name, description)
+        hackathon=Hackathon(name=name, description=description)
+        hackathon.save()
+        message = "Created hackathon successfully!"
+        return render(request, 'base/home.html', {'message':message,})
+    return render(request, 'base/create_hackathon.html')
+
+def register_hackathon(request,id):
+    if request.method == 'POST':
+        hackathon = Hackathon.objects.get(id=id)
+        team_name=request.POST['teamname']
+        team = Team.objects.get(name=team_name)
+        hackathon.teams.add(team)
+        hackathon.save()
+
+
+    return render(request, 'base/register_hackathon.html', {'hackathons':hackathons})

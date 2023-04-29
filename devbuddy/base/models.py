@@ -46,11 +46,13 @@ class Hackathon(models.Model):
     def __str__(self):
         return self.name
 
-class organization(models.Model):
+class Organization(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
+    email=models.EmailField(max_length=100)
     hackathons = models.ManyToManyField(Hackathon)
+    password=models.CharField(max_length=100)
     def __str__(self):
         return self.name    
 
@@ -83,3 +85,8 @@ class Project(models.Model):
 #     def __str__(self):
 #         return self.description
     
+class Tags(models.Model):
+    name = models.CharField(max_length=100)
+    coder= models.ForeignKey(User, related_name='coder', on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
