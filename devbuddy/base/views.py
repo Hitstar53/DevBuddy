@@ -158,4 +158,17 @@ def register_hackathon(request,id):
         team = Team.objects.get(name=team_name)
         hackathon.teams.add(team)
         hackathon.save()
+<<<<<<< HEAD
     return render(request, 'base/register_hackathon.html', {'hackathon':hackathon})
+=======
+
+
+    return render(request, 'base/register_hackathon.html', {'hackathons':hackathons})
+
+
+
+def chat_room(request, room_name):
+    return render(request, 'base/chat.html', {
+        'room_name': room_name
+    })
+>>>>>>> 1839aa0668316b6a4a4708e03d2da4e76473bb03
