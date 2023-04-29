@@ -12,7 +12,10 @@ def getRoutes(request):
             'Endpoint': '/user/',
             'method': 'GET',
             'body': None,
-            'description': 'Returns an active user'
+            'description': 'Returns a user'
+        }, 
+        {
+              
         }
     ]
     return Response(routes)

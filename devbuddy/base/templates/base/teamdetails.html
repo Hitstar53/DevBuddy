@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} 
+<title>DevBuddy | {{teamname}}</title> 
+{% endblock %} 
+
+<!-- make sure to add the team name in the title -->
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/displayteam.css' %}">
+{% endblock %}
+{% block content %}
+
+<!-- add the team name in the header -->
+<h1 class="text-center">{{ team.name }}</h1>
+
+<!-- add the team description in the paragraph -->
+<p class="text-center">{{ team.description }}</p>
+
+<!-- Team Members: -->
+<h2 class="text-center">Team Members</h2>
+{% for id in id_list %}
+{% for i in id %}
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">{{ i }}</h5>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endfor %}
+<!-- add members form   -->
+<div class="mb-3">
+  <form action="" method="POST">
+    {% csrf_token %}
+  <label for="" class="form-label" >Member Username</label>
+  <input type="text" name="username" name="" id="" class="form-control" placeholder="" >
+  <button name="" id="" class="btn btn-primary" type="submit" role="button">Send Invite</button>
+  </form>
+</div>
+
+
+{% endblock %}

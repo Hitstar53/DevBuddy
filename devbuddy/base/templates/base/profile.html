@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Profile</h1>
+    <p>Username: {{ user_profile.username }}</p>
+    <p>Email: {{ user_profile.email }}</p>
+    <p>Location: {{ user_profile.address }}</p>
+    <p>Bio: {{ user_profile.bio }}</p>
+    <p>Profile Picture: </p>
+    <img src="{{ user_profile.avatar }}" alt="Profile Picture">
+    <p>Followers: {{ user_profile.followers }}</p>
+    <p>Following: {{ user_profile.following }}</p>
+    <p>Public Repositories: {{ user_profile.public_repos }}</p>
+    <p>Team Invites: </p>
+    {% for invite in team_names %}
+        <p>{{ invite }}</p>
+    {% endfor %}
+{% endblock content %}

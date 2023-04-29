@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} 
+<title>DevBuddy | Create Team</title> 
+{% endblock %}
+{% block css %}  <link rel="stylesheet" href="{% static 'css/createteam.css' %}">{% endblock %}
+
+{% block content %}
+<body class="">
+    <div class="container-fluid">
+      <div class="row vertical-center">
+          <form class="col-xs-8 col-xs-offset-2  col-sm-6 col-sm-offset-3 col-md-4 col-sm-offset-4 col-lg-2 col-lg-offset-5" method="POST" action="">
+            {% csrf_token %}
+            <h1>Create Team</h1>
+            <p>
+              <label class="sr-only" for="">Team Name</label>
+              <input class="form-control" name="teamname" type="text" placeholder="Team Name" required autofocus>
+            </p>
+            <p>
+              <label class="sr-only" for="">Team Description</label>
+              <input class="form-control" name="teamdesc" type="text" placeholder="Team Description" required>
+            </p>
+            <button type="btn btn-primary btn-block" name="addmember" class="btn btn-default btn-block">Add Member</button>
+            <button class="btn btn-primary btn-block" type="sumbit">Creat Team</button>
+          </form>
+      </div>
+    </div>
+{% endblock %}
+
+
+
