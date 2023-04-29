@@ -10,3 +10,9 @@ def login(request):
 
 def logout(request):
     return redirect('login')
+
+def registerOrg(request):
+    return render(request, 'authenticate/registerOrg.html')
+
+def loginOrg(request):
+    return render(request, 'authenticate/loginOrg.html')

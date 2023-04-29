@@ -39,16 +39,24 @@ class Team(models.Model):
     def __str__(self):
         return self.name
     
-# class Hackathon(models.Model):
-#     name = models.CharField(max_length=100)
-#     description = models.TextField(max_length=500)
-#     teams = models.ManyToManyField(Team)
-#     def __str__(self):
-#         return self.name
-    
+class Hackathon(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+    teams = models.ManyToManyField(Team)
+    def __str__(self):
+        return self.name
+
+class organization(models.Model):
+    name = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
+    hackathons = models.ManyToManyField(Hackathon)
+    def __str__(self):
+        return self.name    
+
 class Project(models.Model):
     pname = models.CharField(max_length=100)
-    repo_url = models.CharField(max_length=200)
+    repo_url = models.CharField(max_length=200,blank=True)
     pteam = models.ForeignKey(Team, related_name='pteam', on_delete=models.CASCADE)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)

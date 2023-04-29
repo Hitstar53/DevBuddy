@@ -8,6 +8,8 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('createteam/', views.createteam, name='createteam'),
     path('addmember/', views.addmember, name='addmember'),
+    path('acceptinvite/<str:teamname>/', views.acceptinvite, name='acceptinvite'),
+    path('rejectinvite/<str:teamname>/', views.rejectinvite, name='rejectinvite'),
     path('teams/', views.teams, name='teams'),
     path('team/<int:id>/', views.team, name='team'),
 ]

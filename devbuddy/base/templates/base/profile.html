@@ -11,7 +11,10 @@
     <p>Following: {{ user_profile.following }}</p>
     <p>Public Repositories: {{ user_profile.public_repos }}</p>
     <p>Team Invites: </p>
-    {% for invite in team_names %}
-        <p>{{ invite }}</p>
+    {% for team in team_names %}
+        <p>{{ team }}</p>
+        {% comment %} give me two buttons to accept or decline {% endcomment %}
+        <a href="{% url 'acceptinvite' teamname=team %}">Accept</a>
+        <a href="{% url 'rejectinvite' teamname=team %}">Decline</a>
     {% endfor %}
 {% endblock content %}

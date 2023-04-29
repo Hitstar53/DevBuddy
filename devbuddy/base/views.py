@@ -120,3 +120,21 @@ def projects(request,id):
         p.save()
         return render(request, 'base/projects.html', {'team':team})
     return render(request, 'base/projects.html')
+
+def acceptinvite(request, teamname):
+    team = Team.objects.get(name=teamname)
+    team.accepted_members.add(request.user)
+    team.invited_members.remove(request.user)
+    request.user.teams.add(team)
+    request.user.invites.remove(team)
+    team.save()
+    request.user.save()
+    return redirect('profile')
+
+def rejectinvite(request, teamname):
+    team = Team.objects.get(name=teamname)
+    team.invited_members.remove(request.user)
+    team.save()
+    request.user.invites.remove(team)
+    request.user.save()
+    return redirect('profile')
