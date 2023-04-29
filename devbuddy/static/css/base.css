@@ -1,35 +1,63 @@
-/* Custom CSS Reset */
-
-*, *::before, *::after {
-  box-sizing: border-box;
+nav {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
-* {
-  margin: 0;
+.navbar-left a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
 }
 
-html, body {
-  height: 100%;
+.navbar-left img {
+    height: 40px;
+    margin: auto 20px;
 }
 
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+.navbar-left span {
+    font-size: 1.5rem;
 }
 
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
+.navbar-right ul {
+    display: flex;
+    list-style-type: none;
+    margin: auto auto;
+    padding: 0;
+    justify-content: flex-end;
 }
 
-input, button, textarea, select {
-  font: inherit;
+.navbar-right{
+    display: flex;
+    align-items: center;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
+.navbar-right li {
+    margin-right: 20px;
+    font-size: 1.25rem;
 }
 
-#root, #__next {
-  isolation: isolate;
+.navbar-right li:last-child {
+    margin-right: 0;
+}
+
+.navbar-right li a {
+    color: white;
+    text-decoration: none;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+.content {
+    margin: 20px;
 }

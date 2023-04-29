@@ -9,7 +9,8 @@ import requests
 def login(request):
     return render(request, 'authenticate/login.html')
 
-def logout(request):
+def logoutv(request):
+    logout(request)
     return redirect('login')
 
 def registerOrg(request):

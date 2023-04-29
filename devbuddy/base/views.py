@@ -10,6 +10,7 @@ def home(request):
     print(git_user)
     url = f"https://api.github.com/users/{git_user}"
     r = requests.get(url.format(git_user)).json()
+    #print(r)
     #save in models
     Name = r['name']
     Bio = r['bio']
@@ -157,6 +158,4 @@ def register_hackathon(request,id):
         team = Team.objects.get(name=team_name)
         hackathon.teams.add(team)
         hackathon.save()
-
-
-    return render(request, 'base/register_hackathon.html', {'hackathons':hackathons})
+    return render(request, 'base/register_hackathon.html', {'hackathon':hackathon})
