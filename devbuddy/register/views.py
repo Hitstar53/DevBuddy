@@ -40,7 +40,7 @@ def loginOrg(request):
         if Organization.objects.filter(email=orgEmail).exists():
             organization = Organization.objects.get(email=orgEmail)
             if organization.password==orgPass:
-                return render(request, 'base/home.html')
+                return redirect("organization", organization.name)
             else:
                 messages.info(request, 'Invalid Password')
                 return redirect('loginOrg')

@@ -65,6 +65,26 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.pname
+    
+# class Room(models.Model):
+#     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+#     team = models.ForeignKey(Team, on_delete=models.CASCADE)
+#     participants = models.ManyToManyField(User, related_name='participants', blank=True)
+#     updated = models.DateTimeField(auto_now=True) #update every time
+#     created = models.DateTimeField(auto_now_add=True) #only save once
+#     class Meta:
+#         ordering = ['-updated','-created']
+#     def __str__(self):
+#         return self.name
+
+# class Message(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     room = models.ForeignKey(Room, on_delete=models.CASCADE)
+#     body = models.TextField()
+#     updated = models.DateTimeField(auto_now=True) #update every time
+#     created = models.DateTimeField(auto_now_add=True) #only save once
+#     def __str__(self):
+#         return self.body[0:69]
 
 # class Issue(models.Model):
 #     title = models.CharField(max_length=100)
@@ -91,3 +111,11 @@ class Tags(models.Model):
     coder= models.ForeignKey(User, related_name='coder', on_delete=models.CASCADE)
     def __str__(self):
         return self.name
+    
+class Chat(models.Model):
+    sender = models.ForeignKey(User, related_name='sender', on_delete=models.CASCADE)
+    message = models.CharField(max_length=500, null=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.message[0:69]
+

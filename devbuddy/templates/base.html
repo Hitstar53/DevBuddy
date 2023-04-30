@@ -28,6 +28,12 @@
             <ul>
                 {% if user.is_authenticated %}
                     <li>
+                        <a href="{% url 'searchhackathon' %}" class="btn btn-success">Search Hackathon</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'teams' %}" class="btn btn-success">Teams</a>
+                    </li>
+                    <li>
                         <a href="{% url 'profile' %}" class="btn btn-success">Profile</a>
                     </li>
                     <li><a href="{% url 'logout' %}" class="btn btn-success">Logout</a></li>

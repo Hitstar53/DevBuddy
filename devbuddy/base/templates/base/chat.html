@@ -1,42 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/chat.css' %}">
-{% block left %}
-    <div class="chat-window">
-  <div class="chat-messages">
-    <div class="chat-message">
-      <div class="sender">John:</div>
-      <div>Hey, how's it going?</div>
-    </div>
-    <div class="chat-message">
-      <div class="sender">Jane:</div>
-      <div>Not too bad, thanks for asking!</div>
-    </div>
-  </div>
-  <form class="chat-input flex">
-    <input type="text" placeholder="Type your message here..." class="flex-1 border border-gray-300 px-3 py-2 rounded-md">
-    <button type="submit" class="ml-2 bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-      </svg>
-    </button>
-  </form>
-</div>
 
+{% block title %}
+<title>DevBuddy | Chat Room</title>
+{% endblock title %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
 {% endblock %}
-{% block right %}
-	<div>
-		<h2 class="text-lg font-bold mb-4">
-			<i class="fas fa-users mr-2"></i>
-			Members
-		</h2>
-		<ul>
-			{% for member in data.members %}
-			<li class="flex items-center mb-2">
-				<img src="{{ member.image }}" alt="{{ member.name }}" class="w-8 h-8 rounded-full mr-2">
-				{{ member.name }}
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+
+{% block left %}
+<form action="" method="POST">
+{% csrf_token %}
+<input type="text" name="message" />
+<input type="submit" class="btn btn-primary"/>
+</form>
 {% endblock %}

@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
 <link rel="stylesheet" src="{% static 'css/searchhackthon.css' %}">
+{% endblock css %}
 {% block left %}
-<form class="chat-input" action="" method="POST">
-    {% csrf_token %}
-    <input type="text" placeholder="Type your message here..." class="flex-1 border border-gray-300 px-3 py-2 rounded-md">
-    <button type="submit" class="ml-2 bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600">
-      <i class="fa-solid fa-magnifying-glass"></i>
-    </button>
+<div class="outer">
+  <form class="chat-input flex" action="" method="POST">
+      {% csrf_token %}
+      <input type="text" name="query" placeholder="Type your message here..." class="flex-1 border border-gray-300 px-3 py-2 rounded-md">
+      <button type="submit" class="ml-2 bg-blue-500 text-white px-3 py-2 rounded-md hover:bg-blue-600">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
   </form>
-
   {% for hackathon in hackathons %}
-   {{hackathon.name}}
+  <div class="flex hackathon">
+   <a href={% url 'uhackathon' hack=hackathon.name %}>{{hackathon.name}}</a>
+  </div>
   {% endfor %} 
+</div>
 {% endblock %}

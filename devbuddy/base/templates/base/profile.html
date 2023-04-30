@@ -42,73 +42,24 @@
       </div>
 
       <div class="profile-card-social">
+        {% for tag in user_tags %}
         <a
-          href="https://www.facebook.com/iaMuhammedErdem"
-          class="profile-card-social__item facebook"
+          href="#"
+          class="profile-card-social__item tags"
           target="_blank"
         >
           <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-facebook"></use></svg>
+            {{ tag }}
           </span>
         </a>
-
+        {% endfor %}
         <a
-          href="https://twitter.com/iaMuhammedErdem"
-          class="profile-card-social__item twitter"
+          href="{% url 'tags' %}"
+          class="profile-card-social__item addtag"
           target="_blank"
         >
           <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-twitter"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="https://www.instagram.com/iamuhammederdem"
-          class="profile-card-social__item instagram"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-instagram"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="https://www.behance.net/iaMuhammedErdem"
-          class="profile-card-social__item behance"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-behance"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="https://github.com/muhammederdem"
-          class="profile-card-social__item github"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-github"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="https://codepen.io/JavaScriptJunkie"
-          class="profile-card-social__item codepen"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-codepen"></use></svg>
-          </span>
-        </a>
-
-        <a
-          href="http://muhammederdem.com.tr/"
-          class="profile-card-social__item link"
-          target="_blank"
-        >
-          <span class="icon-font">
-            <svg class="icon"><use xlink:href="#icon-link"></use></svg>
+            <i class="fa-regular fa-add"></i>
           </span>
         </a>
       </div>
@@ -274,7 +225,7 @@
 {% endfor %}
 </div>
 <div class="filler filler2">
-  <h1>Teams</h2>
+  <h1>Teams</h1>
     {% for team in user_teams %}
   <div class="list">
     <p>{{ team }}</p>

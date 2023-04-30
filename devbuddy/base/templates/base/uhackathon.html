@@ -13,21 +13,21 @@
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name">SPIT Hackathon</div>
+      <div class="profile-card__name">{{h.name}}</div>
       <div class="profile-card__txt">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        {{h.description}}
       </div>
       <div class="profile-card-loc">
         <span class="profile-card-loc__icon">
           <svg class="icon"><use xlink:href="#icon-location"></use></svg>
         </span>
-        <span class="profile-card-loc__txt"> SPIT </span>
+        <span class="profile-card-loc__txt"> {{org.name}}</span>
       </div>
 
       <div class="profile-card-inf">
 
         <div class="profile-card-inf__item">
-          <div class="profile-card-inf__title">20</div>
+          <div class="profile-card-inf__title">{{t}}</div>
           <div class="profile-card-inf__txt">Teams</div>
         </div>
 
@@ -49,19 +49,20 @@
       <form class="profile-card-form" action="" method="POST">
         {% csrf_token %}
         <div class="profile-card-form__container">
+          <input hidden name={{h.name}}>
             <div class="profile-card-form__title">Register</div>
             <div class="profile-card-form__item">
                 <select name="teamname" class="profile-card-form__input">
                 <option value="">Select Team</option>
-                <option value="team1">Team 1</option>
-                <option value="team2">Team 2</option>
-                <option value="team3">Team 3</option>
+                {% for t in tea %}
+                <option value={{t.name}}>{{t.name}}</option>
+                {% endfor %}
                 </select>
             </div>
         </div>
         <div class="profile-card-form__bottom">
           <button class="profile-card__button button--blue " type="submit">
-            Create
+            Register
           </button>
           <button class="profile-card__button button--gray js-message-close">
             Cancel
@@ -91,7 +92,7 @@
 {% block right %}
 <div class="filler">
     <h1> Teams Participating </h1>
-{% for team in team_names %}
+{% for team in te %}
 <div class="list">
 <p>{{ team }}</p>
 </div>

@@ -211,3 +211,7 @@ img {
 .main .wrapper .method-action:hover {
   background: var(--color-light);
 }/*# sourceMappingURL=login.css.map */
+
+.w-70 {
+  width: 100%;
+}

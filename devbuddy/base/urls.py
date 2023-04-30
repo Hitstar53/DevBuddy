@@ -15,7 +15,9 @@ urlpatterns = [
     path('chatroom', views.chat_room, name='chatroom'),
     path('chat/<str:room_name>/', views.chat_room, name='chat_room'),
     path('tags/', views.tags, name='tags'),
-    path('uhackathon/', views.register_hackathon, name='uhackathon'),
+    path('uhackathon/<str:hack>/', views.register_hackathon, name='uhackathon'),
     path('searchhackathon/', views.searchhackathon, name='searchhackathon'),
-    path('organization/', views.create_hackathon, name='organization'),
+    path('organization/<str:name>/', views.create_hackathon, name='organization'),
+    path('chat/', views.chat, name='chat'),
+    path('project', views.project, name='project'),
 ] 

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}
+<title>DevBuddy | Project</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock css %}
+
+{% block left %}
+<!-- <p>Latest Commit</p>
+{% if c_message %}
+<p>{{ c_date }}<p>
+<p>{{ c_author }}<p>
+<p>{{ c_email}}<p>
+{% endif %}
+<p>Latest Issue</p>
+<p>{{ body }}</p>
+<p>{{ issue_created }}</p>
+
+<div class="bg-gray-200 py-8 min-h-screen px-4 sm:px-6 lg:px-8">
+  <div class="max-w-xl mx-auto">
+    <div class="p-10 bg-white rounded-lg shadow-xl overflow-hidden">
+      <h3 class="font-bold text-gray-800">Day 1032 &bull; Feature Cards UI Design</h3>
+      <p class="mt-4 max-w-lg text-sm leading-5 text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Luctus accumsan tortor posuere ac ut consequat semper viverra. Faucibus in ornare quam viverra orci.</p>
+      <a href="#" class="mt-3 inline-block text-sm leading-5 font-medium text-indigo-600 transition duration-300 ease-in-out hover:text-indigo-500">Read More</a>
+      <div>
+        <div class="mt-6 inline-grid grid-cols-3 rounded-lg bg-gray-200 text-gray-700 overflow-hidden">
+        <button class="px-3 py-2 flex items-center transition duration-500 ease-in-out hover:bg-gray-300 focus:outline-none focus:shadow-outline">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4">
+            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+          </svg>
+          <span class="ml-1 text-sm leading-5">9</span>
+        </button>
+        <button class="px-3 py-2 flex items-center transition duration-500 ease-in-out hover:bg-gray-300 focus:outline-none focus:shadow-outline">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+          <span class="ml-1 text-sm leading-5">9</span>
+        </button>
+        <button class="px-3 py-2 flex items-center transition duration-500 ease-in-out hover:bg-gray-300 focus:outline-none focus:shadow-outline">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+          <span class="ml-1 text-sm leading-5">1</span>
+        </button>
+      </div>
+      </div>
+      <p class="mt-6 text-xs leading-4 font-medium text-gray-600">February 17th 2010</p>
+    </div>
+  </div>
+  <p key="credits" class="mt-6 font-medium text-center text-gray-500">
+        Design by
+        <a
+          href="https://twitter.com/Ildiesign"
+          rel="noreferrer noopener"
+          target="_blank"
+          class="underline hover:text-gray-600"
+          >Ildiko Gaspar</a
+        >, Founder of
+        <br class="sm:hidden" />
+        <a
+          href="https://uidesigndaily.com/posts/sketch-help-center-accordion-list-panel-cards-search-day-1088"
+          rel="noreferrer noopener"
+          target="_blank"
+          class="underline hover:text-gray-600"
+          >UI Design Daily</a
+        >
+      </p>
+</div>
+
+
+{% comment %} make a form with 1 text input for repo url {% endcomment %}
+<form action="{% url 'project' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="repo">Repo URL</label>
+        <input type="text" class="form-control" id="repo" name="repo" placeholder="Enter repo url">
+        <label for="repo">Repo Owner</label>
+        <input type="text" class="form-control" id="repo" name="owner" placeholder="Enter name">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
+<div class="max-w-lg rounded-lg overflow-hidden shadow-lg bg-white ml-[500px]">
+  <div class="p-4">
+    <h2 class="text-2xl font-bold mb-2">{{repo}}</h2>
+
+  </div>
+  <div class="px-4 py-2">
+    <h3 class="text-lg font-bold mb-2">Latest Commit</h3>
+    {% if c_message %}
+    <ul>
+      <li class="mb-2">
+        <span class="font-bold">Date:</span>
+        <span class="text-gray-700">{{c_date}}</span>
+      </li>
+      <li class="mb-2">
+        <span class="font-bold">Author:</span>
+        <span class="text-gray-700">{{c_author}}</span>
+      </li>
+      <li class="mb-2">
+        <span class="font-bold">Email:</span>
+        <span class="text-gray-700">{{c_email}}</span>
+      </li>
+    </ul>
+    {% endif %}
+  </div>
+  <div class="px-4 py-2">
+    <h3 class="text-lg font-bold mb-2">Latest Issue</h3>
+    <ul>
+      <li class="mb-2">
+        <span class="font-bold">Body:</span>
+        <span class="text-gray-700">{{body}}</span>
+      </li>
+      <li class="mb-2">
+        <span class="font-bold">Created:</span>
+        <span class="text-gray-700">{{issue_created}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="px-4 py-2">
+    <h3 class="text-lg font-bold mb-2">Submit Repository URL</h3>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="mb-2">
+        <label class="block text-gray-700 font-bold mb-2" for="url">
+          Repository Name
+        </label>
+        <input name="repo" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="url" type="text" placeholder="Enter repository Name">
+      </div>
+      <div class="mb-2">
+        <label class="block text-gray-700 font-bold mb-2" for="leader">
+          Team Leader Username
+        </label>
+        <input name="owner" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="leader" type="text" placeholder="Enter team leader username">
+      </div>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+
+{% endblock left %} 

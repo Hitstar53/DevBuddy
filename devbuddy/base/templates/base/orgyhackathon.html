@@ -7,26 +7,26 @@
   <div class="profile-card js-profile-card">
     <div class="profile-card__img">
       <img
-        src="{% static 'assets/LogoSPIT.png' %}"
+        src="{{organization.image.url}}"
         alt="profile card"
       />
     </div>
 
     <div class="profile-card__cnt js-profile-cnt">
-      <div class="profile-card__name">SPIT</div>
+      <div class="profile-card__name">{{organization.name}}</div>
       <div class="profile-card__txt">
-        Sardar Patel Institute of Technology (SPIT) is an autonomous research and engineering institute associated with the Mumbai University. The institute is ranked 167th under the engineering category by NIRF. 
+        {{organization.description}} 
       </div>
       <div class="profile-card-loc">
         <span class="profile-card-loc__icon">
           <svg class="icon"><use xlink:href="#icon-location"></use></svg>
         </span>
-        <span class="profile-card-loc__txt"> SPIT</span>
+        <span class="profile-card-loc__txt"> {{organization.location}}</span>
       </div>
 
       <div class="profile-card-inf">
         <div class="profile-card-inf__item">
-          <div class="profile-card-inf__title">10</div>
+          <div class="profile-card-inf__title">{{no_of_hackathons}}</div>
           <div class="profile-card-inf__txt">Hackathons</div>
         </div>
 
@@ -79,7 +79,7 @@
             <div class="profile-card-form__title">Create Hackathon</div>
             <div class="profile-card-form__item">
                 <input
-                name = "teamname"
+                name = "hackathonname"
                 type="text"
                 class="profile-card-form__input"
                 placeholder="Hackathon Name"
@@ -87,7 +87,7 @@
             </div>
             <div class="profile-card-form__item">
                 <input
-                name = "teamdesc"
+                name = "hackathondesc"
                 type="text"
                 class="profile-card-form__input"
                 placeholder="Hackathon Description"
@@ -210,11 +210,12 @@
 <div>
 <div class="filler">
   <h1> Previously Hosted Hackathons </h1>
-{% for team in hackathons %}
+{% for h in hackathons %}
 <div class="list">
-<p>{{ team }}</p>
+<p>{{h}}</p>
 </div>
 {% endfor %}
+
 </div>
 {% endblock right %}
 

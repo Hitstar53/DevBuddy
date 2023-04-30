@@ -1,0 +1,3 @@
+web: gunicorn 'devbuddy.wsgi'
+web: gunicorn 'register.wsgi'
+web: gunicorn 'base.wsgi'

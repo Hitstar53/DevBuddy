@@ -10,13 +10,13 @@
 {% endblock %}
 {% block left %}
 
-<!-- add the team name in the header -->
+<!-- add the team name in the header
 <h1 class="text-center">{{ team.name }}</h1>
 
-<!-- add the team description in the paragraph -->
+add the team description in the paragraph 
 <p class="text-center">{{ team.description }}</p>
 
-<!-- Team Members: -->
+Team Members: 
 <h2 class="text-center">Team Members</h2>
 {% for id in id_list %}
 {% for i in id %}
@@ -29,7 +29,7 @@
 </div>
 {% endfor %}
 {% endfor %}
-<!-- add members form   -->
+add members form  
 <div class="mb-3">
   <form action="" method="POST">
     {% csrf_token %}
@@ -37,7 +37,56 @@
   <input type="text" name="username" name="" id="" class="form-control" placeholder="" >
   <button name="" id="" class="btn btn-primary" type="submit" role="button">Send Invite</button>
   </form>
+</div> -->
+
+<div class="max-w-lg h-[30rem] mt-5 rounded-lg overflow-hidden shadow-lg bg-white ml-[500px] ">
+  <div class="p-4">
+    <h2 class="text-2xl font-bold mb-2">{{team.name}}</h2>
+    <p class="text-gray-700 text-base">{{team.description}}</p>
+  </div>
+  <div class="px-4 py-2">
+    <h3 class="text-lg font-bold mb-2">Team Members</h3>
+    <ul>
+      {% for id in id_list %}
+      {% for i in id %}
+      <li class="mb-2">
+        <span class="font-bold">{{i}}</span>
+      </li>
+      {% endfor %}
+      {% endfor %}
+      <!-- <li class="mb-2">
+        <span class="font-bold">Jane Smith</span>
+        <span class="text-gray-700"> - Developer</span>
+      </li>
+      <li class="mb-2">
+        <span class="font-bold">Mike Johnson</span>
+        <span class="text-gray-700"> - Designer</span>
+      </li> -->
+    </ul>
+  </div>
+  <div class="px-4 py-2">
+    <h3 class="text-lg font-bold mb-2">Add Member</h3>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <div class="mb-2">
+        <label class="block text-gray-700 font-bold mb-2" for="name">
+          Name
+        </label>
+        <input name="username" class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Enter name">
+      </div>
+      <!-- <div class="mb-2">
+        <label class="block text-gray-700 font-bold mb-2" for="role">
+          Role
+        </label>
+        <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="role" type="text" placeholder="Enter role">
+      </div> -->
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        Add Member
+      </button>
+    </form>
+  </div>
 </div>
+
 
 
 {% endblock left %}
