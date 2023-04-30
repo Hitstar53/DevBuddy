@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://devbuddy-production.up.railway.app',
-    'https://devbuddy-production.up.railway.app/',
+    'https://devbuddy.up.railway.app',
+    'https://devbuddy.up.railway.app/',
 ]
 
 
