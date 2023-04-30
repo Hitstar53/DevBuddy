@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/tag.css' %}">
+{% endblock %}
+{% block left %}
+<div class="mb-3">
+    <form action="" method="POST">
+        {% csrf_token %}
+  <label for="" class="form-label">Tag Name</label>
+  <input type="text" class="form-control" name="tagname" >
+  <label for="" class="form-label">Username</label>
+  <input type="text" class="form-control" name="username" >
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}
+{% block right %}
+<div class="outer">
+  <div class="inner">
+<h2>Recommended User</h2></div>
+{% for id in ids %}
+<div class="inner"><p>{{id}}, </p></div>
+{% endfor %}
+</div>
+
+{% endblock %}

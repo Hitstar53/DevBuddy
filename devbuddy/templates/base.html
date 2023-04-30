@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>DevBuddy | base</title>
+    {% endblock title %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block css %}
+    {% endblock css %}
+</head>
+<body>
+    {% block navbar %}
+        <nav>
+        <div class="navbar-left">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'assets/github-mark-white.png' %}" alt="DevBuddy Logo">
+                <span>DevBuddy</span>
+            </a>
+        </div>
+        <div class="navbar-right">
+            <ul>
+                {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url 'searchhackathon' %}" class="btn btn-success">Search Hackathon</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'teams' %}" class="btn btn-success">Teams</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'profile' %}" class="btn btn-success">Profile</a>
+                    </li>
+                    <li><a href="{% url 'logout' %}" class="btn btn-success">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'social:begin' 'github' %}" class="btn btn-success">Login</a></li>
+                    <li><a href="#" class="btn btn-success">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% endblock navbar %}
+
+    <div class="flex flex-row h-screen w-full">
+        <div class="flex flex-row w-70 h-screen bg-white p-6 shadow-md">
+          {% block left %}
+          {% endblock %}
+        </div>
+        <div class="flex flex-row w-30 h-screen bg-gray-100 p-6 shadow-md">
+          {% block right %}
+          {% endblock %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/base.js' %}"></script>
+    {% block scripts %}
+    {% endblock %}
+    <script src="https://kit.fontawesome.com/ccf941b7da.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+{% block title %}
+<title>DevBuddy | Home</title>
+{% endblock %} 
+{% block home %} 
+{% comment %} show messages from django {% endcomment %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="row">
+        <div class="col-sm-12 mb-3">
+            <h4 class="text-center">Welcome {{ user.username }}</h4>
+        </div>
+        <div class="col-sm-12 text-center">
+            <a href="{% url 'profile' %}" class="btn btn-primary">Profile</a>
+        </div>
+        <div class="col-sm-12 text-center py-2">
+            <a href="{% url 'teams' %}" class="btn btn-primary">Teams</a>
+        </div>
+        <div class="col-sm-12 text-center">
+            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+        </div>
+        {% comment %} add a button to create a team {% endcomment %}
+        <div class="col-sm-12 text-center py-2">
+            <a href="{% url 'createteam' %}" class="btn btn-primary">Create Team</a>
+        </div>
+    </div>
+{% endblock %}

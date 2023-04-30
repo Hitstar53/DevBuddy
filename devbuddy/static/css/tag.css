@@ -1,0 +1,17 @@
+.inner h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.inner p{
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    color: #333;
+    line-height: 1.5;
+    text-align: center;
+}

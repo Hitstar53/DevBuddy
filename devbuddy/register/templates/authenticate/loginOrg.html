@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>DevBuddy | Login</title>
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
+
+{% block left %} 
+    <section class="loginselect container">
+    <main class="main">
+        <div class="container">
+            <section class="wrapper">
+                <div class="heading">
+                    <h1 class="text text-xl">Login</h1>
+                    </p>
+                </div>
+                <form name="signin" class="form" action=""  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input-control">
+                        <input type="email" name="orgEmail" id="email" class="input-field" placeholder="Organisation Email">
+                    </div>
+                    <div class="input-control">
+                        <label for="password" class="input-label" hidden>Password</label>
+                        <input type="password" name="orgPass" id="password" class="input-field" placeholder="Password">
+                    </div>
+                    <div class="input-control">
+                        <input type="submit" name="submit" class="mx-auto input-submit" value="Log In" >
+                    </div>
+                </form>
+                <div class="input-control">
+                    <a href="{% url 'registerOrg' %}" class="text text-center">Don't have an account? </a>
+                    
+                </div>
+                <div class="striped">
+                    <span class="striped-line"></span>
+                    <span class="striped-text"></span>
+                    <span class="striped-line"></span>
+                </div>
+            </section>
+        </div>
+    </main>
+</section>
+{% endblock left %}

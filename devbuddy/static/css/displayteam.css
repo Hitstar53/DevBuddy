@@ -1,0 +1,21 @@
+.card {
+    margin: 10px;
+}
+.card-title {
+    font-size: 20px;
+}
+.card-text {
+    font-size: 15px;
+}
+.btn-primary {
+    font-size: 15px;
+}
+.text-center {
+    text-align: center;
+}
+
+.container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}

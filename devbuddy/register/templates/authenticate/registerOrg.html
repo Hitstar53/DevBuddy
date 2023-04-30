@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<title>DevBuddy | Register Organisation</title>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block left %}
+<section class="loginselect container">
+    <main class="main">
+        <div class="container">
+            <section class="wrapper">
+                <div class="heading">
+                    <h1 class="text text-xl">Organization Details</h1>
+                    </p>
+                </div>
+                <form name="signin" class="form" action=""  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input-control">
+                        <input type="text" name="orgName" id="email" class="input-field" placeholder="Organisation Name">
+                    </div>
+                    <div class="input-control">
+                        <input type="email" name="orgEmail" id="email" class="input-field" placeholder="Organisation Email">
+                    </div>
+                    <div class="input-control">
+                        <input type="text" name="orgDesc" id="desc" class="input-field" placeholder="description">
+                    </div>
+                    <div class="input-control">
+                        <input type="text" name="orgLoc" id="loc" class="input-field" placeholder="Location">
+                    </div>
+                    <div class="input-control">
+                        <input type="file" name="orgImage" id="image" class="input-field" placeholder="Image">
+                    </div>
+                    <div class="input-control">
+                        <label for="password" class="input-label" hidden>Password</label>
+                        <input type="password" name="orgPass" id="password" class="input-field" placeholder="Password">
+                    </div>
+                    <div class="input-control">
+                        <label for="password" class="input-label" hidden>Password</label>
+                        <input type="password" name="orgPassConfirm" id="password" class="input-field" placeholder="Confirm Password">
+                    </div>
+                    <div class="input-control">
+                        <input type="submit" name="submit" class="mx-auto input-submit" value="Sign In" >
+                    </div>
+                    
+                </form>
+                <div class="striped">
+                    <span class="striped-line"></span>
+                    <span class="striped-text">Or</span>
+                    <span class="striped-line"></span>
+                </div>
+                <div class="method">
+                    <div class="method-control">
+                        <a href="#" class="method-action text-light bg-dark">
+                            <i class="ion ion-logo-google"></i>
+                            <span>Sign in with Github as User</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</section>
+{% endblock %}
