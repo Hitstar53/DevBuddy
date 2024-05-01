@@ -11,7 +11,7 @@ django-rest-framework==0.1.0
 django-sse==0.4.1
 djangorestframework==3.14.0
 gunicorn==22.0.0
-idna==3.4
+idna==3.7
 joblib==1.2.0
 numpy==1.24.3
 oauthlib==3.2.2
