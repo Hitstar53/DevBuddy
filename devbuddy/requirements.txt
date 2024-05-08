@@ -5,7 +5,7 @@ charset-normalizer==3.1.0
 cryptography==42.0.4
 defusedxml==0.7.1
 Deprecated==1.2.13
-Django==4.2.10
+Django==4.2.11
 django-cors-headers==3.14.0
 django-rest-framework==0.1.0
 django-sse==0.4.1
